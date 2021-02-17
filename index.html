@@ -33,9 +33,6 @@
 		  <li class="nav-item">
 			<a class="nav-link" id="ble-tab" data-toggle="tab" href="#ble" role="tab" aria-controls="ble" aria-selected="false">Bluetooth</a>
 		  </li>
-		   <!--<li class="nav-item">
-			<a class="nav-link" id="sound-tab" data-toggle="tab" href="#sound" role="tab" aria-controls="sound" aria-selected="false">Sound</a>
-		  </li>-->
 		</ul>
 		<br/>
 				
@@ -103,72 +100,17 @@
 		
 		</div>
 		  
-
-		<!-- SOUND PANEL -->
-		<div class="tab-pane fade" id="sound" role="tabpanel" aria-labelledby="sound-tab">
-		<input type="button" value="init sounds" onclick="playsnare();"/>
-		</div>
-
 		  
 		  
 		</div>
 		
 	</div>
 	
-	<!-- LEGAL NOTICE -->
-		<div id="legalnotice" class="modal fade" role="dialog" ><div class="modal-dialog"><div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title">Legal Notice</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-			</div>
-			<div class="modal-body" style="display: block; height: 50%; overflow: scroll;">
-				<p class="h5">MIT License<p>		
-				<p class="h6">Copyright (c) 2017 PhilipPF (LAMOUROUX PHILIPPE)</p>				
-				Permission is hereby granted, free of charge, to any person obtaining a copy
-				of this software and associated documentation files (the "Software"), to deal
-				in the Software without restriction, including without limitation the rights
-				to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-				copies of the Software, and to permit persons to whom the Software is
-				furnished to do so, subject to the following conditions:
-				<br/><br/>
-				The above copyright notice and this permission notice shall be included in all
-				copies or substantial portions of the Software.
-				<br/><br/>
-				THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-				IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-				FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-				AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-				LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-				OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-				SOFTWARE.
-			</div>
-		</div></div></div>
+
 
 	
-	<!-- CONTACT ME -->
-		<div id="contactme" class="modal fade" role="dialog" ><div class="modal-dialog"><div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title">Contact</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-			</div>
-			<div class="modal-body" style="display: block; height: 30%; overflow: scroll;">
-				<p class="h6">You can contact me on <a href="https://www.facebook.com/lamouroux.philippe" target="_blank">Facebook</a> or by e-mail at <a href="mailto:flexiblemidi@outlook.com">flexiblemidi@outlook.com</a>
-					
-			</div>
-		</div></div></div>
 		
-	
-	 <footer class="footer">
-      <div class="container">
-        <span class="text-muted" onclick='$("#legalnotice").modal();'>Legal Notice</span>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<span class="text-muted" onclick='$("#contactme").modal();'>Contact me</span>
-      </div>
-    </footer>
+
 
 		
 			<script type="text/javascript">
@@ -176,15 +118,6 @@
 			/* ========== MISC ========= */
 			
 			
-			/* ======== WEB AUDIO API PART (using HOWLER) ============== */
-			
-			var snaresound = new Howl({
-			  src: ['https://freewavesamples.com/files/Korg-TR-Rack-Standard-Kit-Snare-Drum-6.wav']
-			})
-			
-			function playsnare() {	
-				snaresound.play();
-			}
 			
 			
 			/* ============== 	MIDI I/O PART 	================== */
@@ -329,19 +262,10 @@
 			
 			function handleNotifications(event) {
 				let act = event.target.value.getUint8(2);
-				let note = event.target.value.getUint8(3);				
+				let note = event.target.value.getUint8(3);
 				let vel = event.target.value.getUint8(4);
 
-				console.log(act, note, vel);
-				  /*let a = [];
-				  for (let i = 0; i < value.byteLength; i++) {
-					a.push( value.getUint8(i) );
-				  }
-				  console.log('> ' + a.join(' '));
-				  if (a[3] == 38 || a[3] == 41 || a[3] == 43 || a[3] == 42) {
-					playnote(a[3]);
-				  }*/
-				if (act==144) // note on
+				if (act==144)
 				{	
 					playnote(note,vel);				  
 				}
