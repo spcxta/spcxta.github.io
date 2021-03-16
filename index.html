@@ -268,15 +268,15 @@
 
 				while(i < inputstream.byteLength) {
 
-					const status = intstream.getUint8(i+1);
+					const status = inputstream.getUint8(i+1);
 
 					i += 2;
 
 					if (status == 144)
 					{
 
-						const pitch = intstream.getUint8(i);
-            const velocity = intstream.getUint8(i+1);
+						const pitch = inputstream.getUint8(i);
+            const velocity = inputstream.getUint8(i+1);
 						console.log("144", pitch, velocity, event.target.value)
 
 						playnote(pitch,	velocity);				  
