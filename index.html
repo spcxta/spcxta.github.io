@@ -261,17 +261,34 @@
 			
 			
 			function handleNotifications(event) {
+
+
+
+
+
 				let act = event.target.value.getUint8(2);
-				let note = event.target.value.getUint8(3);
-				let vel = event.target.value.getUint8(4);
 
 				if (act==144)
 				{	
-					console.log("144", note, vel)
+	
+					let note = event.target.value.getUint8(3);
+					let vel = event.target.value.getUint8(4);
+
+					console.log("144", note, vel, event.target.value)
+
 					playnote(note,vel);				  
-				} else {
+				} else if(act==176) {
+
+					let controller = event.target.value.getUint8(3);
+
+					console.log("176", controller, event.target.value)
+
+				}
+				else {
 					console.warn(act, event.target.value)
 				}
+
+				//176???
 			}
 			
 			
