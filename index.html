@@ -267,7 +267,10 @@
 
 				if (act==144)
 				{	
+					console.log("144", note, vel)
 					playnote(note,vel);				  
+				} else {
+					console.warn(act, event.target.value)
 				}
 			}
 			
