@@ -277,7 +277,7 @@
 
 						const pitch = inputstream.getUint8(i);
             const velocity = inputstream.getUint8(i+1);
-						console.log("144", pitch, velocity, event.target.value)
+						console.log(i, "144", pitch, velocity, event.target.value)
 
 						playnote(pitch,	velocity);				  
 
